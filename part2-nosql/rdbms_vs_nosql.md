@@ -1,0 +1,9 @@
+## Database Recommendation
+My recommendation for a healthcare patient management system would be to anchor the core platform on MySQL (or any strong RDBMS).
+In real-world systems, especially in regulated domains like healthcare, the primary concern is not just storage—it’s data correctness, traceability, and transactional integrity. Patient records, prescriptions, and billing workflows require strict guarantees. ACID compliance ensures that updates are atomic and consistent, which is critical when multiple services (doctor inputs, pharmacy updates, insurance claims) interact with the same data. In my experience, relaxing consistency (as in BASE systems) introduces subtle data anomalies that are extremely hard to debug and unacceptable in healthcare scenarios.
+From a CAP perspective, I would consciously lean toward Consistency over Availability for core workflows. A slightly delayed response is far more acceptable than serving incorrect medical data.
+That said, I would not treat this as a binary choice. As systems scale, especially with features like fraud detection, audit logging, or behavioral analytics, the data patterns shift. These workloads are typically high-volume, semi-structured, and require horizontal scalability. This is where MongoDB becomes valuable. I’ve seen significant performance gains when offloading such analytical or exploratory workloads to a document store instead of overloading transactional systems.
+So, architecturally, I would design a polyglot persistence model:
+MySQL for transactional integrity (patients, appointments, billing)
+MongoDB for analytics, fraud detection, and event-driven data
+This separation keeps the system both robust and scalable, while ensuring that critical data paths remain reliable and auditable.

@@ -1,0 +1,56 @@
+[
+  {
+    "product_id": "E1001",
+    "name": "Smartphone X",
+    "category": "Electronics",
+    "price": 45000,
+    "brand": "TechCorp",
+    "specifications": {
+      "ram": "8GB",
+      "storage": "128GB",
+      "battery": "5000mAh",
+      "warranty_years": 2
+    },
+    "features": ["5G", "Fast Charging", "AMOLED Display"],
+    "ratings": {
+      "average": 4.5,
+      "reviews": 1200
+    }
+  },
+  {
+    "product_id": "C2001",
+    "name": "Men's Casual Shirt",
+    "category": "Clothing",
+    "price": 1200,
+    "brand": "FashionHub",
+    "sizes": ["S", "M", "L", "XL"],
+    "material": "Cotton",
+    "colors": ["Blue", "White", "Black"],
+    "stock": {
+      "warehouse": 150,
+      "store": 40
+    },
+    "ratings": {
+      "average": 4.2,
+      "reviews": 300
+    }
+  },
+  {
+    "product_id": "G3001",
+    "name": "Organic Milk",
+    "category": "Groceries",
+    "price": 60,
+    "brand": "FreshFarm",
+    "expiry_date": "2024-12-20",
+    "nutritional_info": {
+      "calories": 150,
+      "protein": "8g",
+      "fat": "7g"
+    },
+    "packaging": {
+      "type": "Tetra Pack",
+      "volume": "1L"
+    },
+    "available_units": [1, 2, 5]
+  }
+]
