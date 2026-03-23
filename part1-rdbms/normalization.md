@@ -45,5 +45,10 @@ Columns involved:
 - sales_rep_id
 If row 0 is deleted, and it is the only row containing product P004, then all information about that product will be lost.
 Similarly, sales rep data may also be lost if it exists only in that row.
-
 This is an example of delete anomaly.
+
+
+## Normalization Justification
+I would refute the manager’s position. Keeping everything in one table may look simpler at first, but in this dataset it quickly creates maintenance and data-quality problems. The flat file mixes customers, products, orders, and sales representatives in the same row, which means the same information is repeated again and again. For example, customer C002 (Priya Sharma) appears in multiple orders such as ORD1027 and ORD1002. If her city or email changes, every related row must be updated. Missing even one row creates inconsistent customer data. In real work, this is exactly how reporting errors and trust issues start.
+The same problem exists for products and sales representatives. Product details such as P007 - Pen Set are tied to order rows. That means a new product cannot be stored unless an order already exists, which is not practical for a business that wants to maintain a product catalog separately. Similarly, deleting an order can accidentally remove useful product or sales-rep information if that row was the only place where it appeared.
+Normalization is not over-engineering here; it is a way to protect data quality and make the system easier to manage as the business grows. By separating the data into customers, products, sales_reps, orders, and order_items, each fact is stored only once in the right place. This reduces duplication, avoids accidental data loss, and makes updates safer. In practice, normalization makes the database more reliable, easier to query, and far less error-prone than keeping everything in one large table.
